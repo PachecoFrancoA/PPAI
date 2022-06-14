@@ -73,11 +73,7 @@ namespace PPAI.Gestor
         {
             DateTime fechaActual = DateTime.Now;
 
-            PersonalCientifico personalCientifico = new PersonalCientifico();
-            personalCientifico.usuario = usuario;
-            personalCientifico.nombre = "Juan";
-            personalCientifico.correo_inst = "juan@gmail.com";
-            personalCientifico.correo_pers = "juan@gmail.com";
+            PersonalCientifico personalCientifico = new PersonalCientifico(82387, "Juan", "juan@gmail.com", "juan@gmail.com", usuario);
 
             Estado disponible = new Estado("Disponible", "Recurso Tecnologico");
 

@@ -10,6 +10,16 @@ namespace PPAI.Entidades
     {
         private string nombre { get; set; }
 
+        public Marca(string nombre)
+        {
+            this.nombre = nombre;
+        }
+
+        public void setNombre(string nombre)
+        {
+            this.nombre = nombre;
+        }
+
         public String getNombre()
         {
             return this.nombre;
