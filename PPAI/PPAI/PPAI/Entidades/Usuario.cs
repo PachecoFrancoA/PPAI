@@ -12,6 +12,6 @@ namespace PPAI.Entidades
         public string usuario { get; set; }
         //public PersonalCientifico personalCientifico { get; set; }
         //public bool habilitado { get; set; }
-
+        //probando
     }
 }
