@@ -54,15 +54,14 @@ namespace PPAI.Gestor
 
         private Estado buscarEstadoDisponible()
         {
-            Estado disponible = new Estado();
-            disponible.nombre = "Disponible";
-            disponible.ambito = "Recurso Tecnologico";
+            Estado disponible = new Estado("Disponible", "Recurso Tecnologico");
+
             List<Estado> estados = new List<Estado>();
             estados.Add(disponible);
 
             foreach (Estado estado in estados)
             {
-                if (estado.conocerAmbito() == "Recurso Tecnologico" && estado.conocerNombre() == "Disponible")
+                if (estado.getAmbito() == "Recurso Tecnologico" && estado.getNombre() == "Disponible")
                 {
                     disponible = estado;
                 }
@@ -80,9 +79,7 @@ namespace PPAI.Gestor
             personalCientifico.correo_inst = "juan@gmail.com";
             personalCientifico.correo_pers = "juan@gmail.com";
 
-            Estado disponible = new Estado();
-            disponible.ambito = "Recurso Tecnologico";
-            disponible.nombre = "Disponible";
+            Estado disponible = new Estado("Disponible", "Recurso Tecnologico");
 
             CambioEstadoRT cambioEstadoRT = new CambioEstadoRT();
             cambioEstadoRT.fechaHoraDesde = new DateTime(2022, 6, 5);
@@ -120,5 +117,6 @@ namespace PPAI.Gestor
             return asignacion.misRTDisponibles(disponible);
             //return asignacion.mostrarRecursos();
 
+        }
     }
 }

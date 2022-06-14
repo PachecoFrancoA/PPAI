@@ -1,24 +1,39 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PPAI.Entidades
+﻿namespace PPAI.Entidades
 {
     public class Estado
     {
-        public string nombre { get; set; }
-        public string ambito { get; set; }
 
-        public string conocerNombre()
+
+        private string nombre { get; set; }
+        private string ambito { get; set; }
+
+        public Estado(string nombre, string ambito)
+        {
+            this.nombre = nombre;
+            this.ambito = ambito;
+        }
+
+        public void setNombre(string nombre)
+        {
+            this.nombre = nombre;
+        }
+
+        public string getNombre()
         {
             return this.nombre;
         }
-        public string conocerAmbito()
+        public void setAmbito(string ambito)
+        {
+            this.ambito = ambito;
+        }
+
+        public string getAmbito()
         {
             return this.ambito;
         }
+
+
+
     }
     
 }
