@@ -8,10 +8,61 @@ namespace PPAI.Entidades
 {
     public class AsignacionResponsableTecnicoRT
     {
-        public DateTime? fechaDesde { get; set; }
-        public DateTime? fechaHasta { get; set; }
-        public PersonalCientifico personalCientifico { get; set; }
-        public List<RecursoTecnologico> recursoTecnologico { get; set; }
+        private DateTime? fechaDesde { get; set; }
+        private DateTime? fechaHasta { get; set; }
+        private PersonalCientifico personalCientifico { get; set; }
+        private List<RecursoTecnologico> recursoTecnologico { get; set; }
+
+        public AsignacionResponsableTecnicoRT(DateTime fechaDesde, DateTime fechaHasta, PersonalCientifico personalCientifico, List<RecursoTecnologico> recursoTecnologicos)
+        {
+            this.fechaDesde = fechaDesde;
+            this.fechaHasta = fechaHasta;
+            this.personalCientifico = personalCientifico;
+            this.recursoTecnologico = recursoTecnologicos;
+        }
+
+        public PersonalCientifico getPersonalCientifico()
+        {
+            return this.personalCientifico;
+        }
+
+        public DateTime? getFechaDesde()
+        {
+            return this.fechaDesde;
+        }
+        public DateTime? getFechaHasta()
+        {
+            return this.fechaHasta;
+        }
+
+        public List<RecursoTecnologico> getRecursosTecnologicos()
+        {
+            return this.recursoTecnologico;
+        }
+
+
+        public void setPersonCienti(PersonalCientifico persCient)
+        {
+            this.personalCientifico = persCient;
+        }
+
+        public void setRT(List<RecursoTecnologico> rt)
+        {
+            this.recursoTecnologico = rt;
+
+        }
+
+        public void setFechaDesde(DateTime? fechaDesde)
+        {
+            this.fechaDesde = fechaDesde;
+        }
+
+        public void setFechaHasta(DateTime? fechaHasta)
+        {
+            this.fechaHasta = fechaHasta;
+        }
+
+
 
 
         public Boolean esTuUsuario(Usuario usuario)
@@ -42,15 +93,15 @@ namespace PPAI.Entidades
             return recursos;
         }
 
-        //public List<RecursoTecnologico> mostrarRecursos()
-        //{
-        //    List<RecursoTecnologico> recursos = new List<RecursoTecnologico>();
-        //    foreach (RecursoTecnologico r in this.recursoTecnologico)
-        //    {
-        //        recursos.Add(r);
-        //    }
-        //    return recursos;
-        //}
+        public List<RecursoTecnologico> mostrarRecursos()
+        {
+            List<RecursoTecnologico> recursos = new List<RecursoTecnologico>();
+            foreach (RecursoTecnologico r in this.recursoTecnologico)
+            {
+                recursos.Add(r);
+            }
+            return recursos;
+        }
 
     }
 }

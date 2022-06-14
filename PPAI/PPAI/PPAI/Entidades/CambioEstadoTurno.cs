@@ -8,8 +8,40 @@ namespace PPAI.Entidades
 {
     public class CambioEstadoTurno
     {
-        public DateTime? fechaHoraDesde { get; set; }
-        public DateTime? fechaHoraHasta { get; set; }
-        public Estado Estado { get; set; }
+        private DateTime? fechaHoraDesde { get; set; }
+        private DateTime? fechaHoraHasta { get; set; }
+        private Estado estado { get; set; }
+
+
+
+        public void setFechaHoraDesde(DateTime? fechaHoraDesde)
+        {
+            this.fechaHoraDesde = fechaHoraDesde;
+        }
+
+        public DateTime? getFechaHoraDesde()
+        {
+            return this.fechaHoraDesde;
+        }
+
+        public void setFechaHoraHasta(DateTime? fechaHoraHasta)
+        {
+            this.fechaHoraHasta = fechaHoraHasta;
+        }
+
+        public DateTime? getFechaHoraHasta()
+        {
+            return this.fechaHoraHasta;
+        }
+
+        public void setEstado(Estado estado)
+        {
+            this.estado = estado;
+        }
+
+        public Estado getEstado()
+        {
+            return this.estado;
+        }
     }
 }

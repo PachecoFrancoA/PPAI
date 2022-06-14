@@ -10,30 +10,46 @@ namespace PPAI.Entidades
     {
 
         // hacer un metodo para que se ordenen solos segun el tipo de recurso
-        public int numeroRT { get; set; }
-        public DateTime? fechaAlta { get; set; }
-        public TipoRT tipoRT { get; set; }
-        public Modelo modelo { get; set; }
+        private int numeroRT { get; set; }
+        private DateTime? fechaAlta { get; set; }
 
-        public List<CambioEstadoRT> cambiosEstado = new List<CambioEstadoRT>();
+        private TipoRT tipoRT { get; set; }
+        private Modelo modelo { get; set; }
+
+        private List<CambioEstadoRT> cambiosEstado = new List<CambioEstadoRT>();
 
         public int getNumero()
         {
             return this.numeroRT;
         }
-        public String getTipoRT()
+        public TipoRT getTipoRT()
         {
-            return this.tipoRT.getNombre();
+            return this.tipoRT;
         }
-        public String getMarca()
+        public Modelo getModelo()
         {
-            //Me devuelve el puntero Marca
-            return modelo.getMarca();
+            return this.modelo;
         }
-        public String getModelo()
+
+        public string getMarca()
         {
-            //Me devuelve el puntero para el Modelo
-            return this.modelo.getNombre();
+            return this.modelo.getMarca();
+        }
+
+
+        public void setNumero(int numero)
+        {
+            this.numeroRT = numero;
+        }
+
+        public void setFechaAlta(DateTime? fechaAlta)
+        {
+            this.fechaAlta = fechaAlta;
+        }
+
+        public void setModelo(Modelo modelo)
+        {
+            this.modelo = modelo;
         }
 
         public Boolean estaDisponible(Estado disponible)
@@ -51,8 +67,8 @@ namespace PPAI.Entidades
             return false;
         }
 
-        
 
-       
+
+
     }
 }

@@ -8,14 +8,43 @@ namespace PPAI.Entidades
 {
     public class Sesion
     {
-        public DateTime? FechaHoraFin { get; set; }
-        public DateTime? FechaHoraInicio { get; set; }
-        public Usuario usuario { get; set; }
+        private DateTime? fechaHoraFin { get; set; }
+        private DateTime? fechaHoraInicio { get; set; }
+        private Usuario usuario { get; set; }
 
-        public Usuario conocerUsuario()
+
+
+        public void setFechaHoraFin(DateTime? fechaHoraFin)
+        {
+            this.fechaHoraFin = fechaHoraFin;
+        }
+
+        public DateTime? getFechaHoraFin()
+        {
+            return this.fechaHoraFin;
+        }
+
+        public void setFechaHoraInicio(DateTime? fechaHoraInicio)
+        {
+            this.fechaHoraInicio = fechaHoraInicio;
+        }
+
+        public DateTime? getFechaHoraInicio()
+        {
+            return this.fechaHoraInicio;
+        }
+
+        public void setUsuario(Usuario usuario)
+        {
+            this.usuario = usuario;
+        }
+
+        public Usuario getUsuario()
         {
             return this.usuario;
         }
+
+
 
     }
 }
