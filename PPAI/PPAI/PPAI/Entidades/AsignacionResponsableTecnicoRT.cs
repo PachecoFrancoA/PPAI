@@ -13,12 +13,11 @@ namespace PPAI.Entidades
         private PersonalCientifico personalCientifico { get; set; }
         private List<RecursoTecnologico> recursoTecnologico { get; set; }
 
-        public AsignacionResponsableTecnicoRT(DateTime fechaDesde, DateTime fechaHasta, PersonalCientifico personalCientifico, List<RecursoTecnologico> recursoTecnologicos)
+        public AsignacionResponsableTecnicoRT(DateTime fechaDesde, PersonalCientifico personalCientifico, List<RecursoTecnologico> recursos)
         {
             this.fechaDesde = fechaDesde;
-            this.fechaHasta = fechaHasta;
             this.personalCientifico = personalCientifico;
-            this.recursoTecnologico = recursoTecnologicos;
+            this.recursoTecnologico = recursos;
         }
 
         public PersonalCientifico getPersonalCientifico()

@@ -12,6 +12,13 @@ namespace PPAI.Entidades
         private DateTime? fechaHoraHasta { get; set; }
         private Estado estado { get; set; }
 
+        public CambioEstadoRT(DateTime? fechaHoraDesde, DateTime? fechaHoraHasta, Estado estado)
+        {
+            this.fechaHoraDesde = fechaHoraDesde;
+            this.fechaHoraHasta = fechaHoraHasta;
+            this.estado = estado;
+        }
+
         public Boolean esUltimo()
         {
             DateTime fechaActual = DateTime.Now;

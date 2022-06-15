@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PPAI.Entidades;
 
 namespace PPAI.Entidades
 {
@@ -16,7 +17,19 @@ namespace PPAI.Entidades
         private TipoRT tipoRT { get; set; }
         private Modelo modelo { get; set; }
 
-        private List<CambioEstadoRT> cambiosEstado = new List<CambioEstadoRT>();
+        private List<CambioEstadoRT> cambiosEstado;
+
+        public RecursoTecnologico(int numero, DateTime? fechaAlta, TipoRT tipoRT, Modelo modelo)
+        {
+            this.numeroRT = numero;
+            this.fechaAlta = fechaAlta;
+            this.tipoRT = tipoRT;
+            this.modelo = modelo;
+            this.cambiosEstado = new List<CambioEstadoRT>();
+
+        }
+
+        
 
         public int getNumero()
         {
@@ -65,6 +78,11 @@ namespace PPAI.Entidades
                 }
             }
             return false;
+        }
+
+        public void agregarCambioEstado(CambioEstadoRT cambio)
+        {
+            this.cambiosEstado.Add(cambio);
         }
 
 

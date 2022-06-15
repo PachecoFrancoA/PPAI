@@ -32,6 +32,18 @@
             return this.ambito;
         }
 
+        public bool sosDisponibleDeRecursoTecnologico()
+        {
+            if (nombre == "Disponible" && ambito == "RecursoTecnologico")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
 
 
     }

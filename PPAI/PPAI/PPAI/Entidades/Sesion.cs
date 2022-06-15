@@ -12,7 +12,16 @@ namespace PPAI.Entidades
         private DateTime? fechaHoraInicio { get; set; }
         private Usuario usuario { get; set; }
 
+        public Sesion()
+        {
+            
+        }
 
+        public Sesion(DateTime? fechaHoraInicio, Usuario usuario)
+        {
+            this.fechaHoraInicio = fechaHoraInicio;
+            this.usuario = usuario;
+        }
 
         public void setFechaHoraFin(DateTime? fechaHoraFin)
         {

@@ -17,15 +17,10 @@ namespace PPAI.Gestor
         public frmMenu principal;
         public PersonalCientifico personalCientifico { get; set; }
         public AsignacionResponsableTecnicoRT asignacionResponsableTecnico { get; set; }
-        public Sesion sesionActual = new Sesion()
-        {
-            FechaHoraInicio = DateTime.Now,
-            usuario = new Usuario()
-            {
-                usuario = "ppai",
-                password = "ppai",
-            }
-        };
+
+        public Usuario usuario;
+        public Sesion sesionActual; 
+        
         public FormularioSeleccionRT pantallaRT;
 
         public Estado estadoRT { get; set; }
@@ -35,15 +30,21 @@ namespace PPAI.Gestor
 
         public Usuario usuarioLogueado { get; set; }
 
+        public DatosSoporte datosSoporte;
+
 
 
         public void opcionRegistrarMantenimientoCorrectivoRT()
         {
+            this.usuario = new Usuario("ppai", "ppai");
+            this.sesionActual = new Sesion(DateTime.Now, usuario);
+            this.datosSoporte = new DatosSoporte();
+
             pantallaRT = new FormularioSeleccionRT(this);
 
             disponible = buscarEstadoDisponible();
 
-            asignacionResponsableTecnico = buscarAsginacionResponsable(sesionActual.conocerUsuario());
+            asignacionResponsableTecnico = buscarAsginacionResponsable(sesionActual.getUsuario());
 
             recursoTecnologicos = buscarRTDisponibles(asignacionResponsableTecnico, disponible);
 
@@ -54,45 +55,28 @@ namespace PPAI.Gestor
 
         private Estado buscarEstadoDisponible()
         {
-            Estado disponible = new Estado("Disponible", "Recurso Tecnologico");
-
-            List<Estado> estados = new List<Estado>();
-            estados.Add(disponible);
-
-            foreach (Estado estado in estados)
-            {
-                if (estado.getAmbito() == "Recurso Tecnologico" && estado.getNombre() == "Disponible")
-                {
-                    disponible = estado;
-                }
-            }
-
-            return disponible;
+            return datosSoporte.getEstadoDisponibleRecursoTecnologico();
         }
+        
         private AsignacionResponsableTecnicoRT buscarAsginacionResponsable(Usuario usuario)
         {
             DateTime fechaActual = DateTime.Now;
 
             PersonalCientifico personalCientifico = new PersonalCientifico(82387, "Juan", "juan@gmail.com", "juan@gmail.com", usuario);
 
-            Estado disponible = new Estado("Disponible", "Recurso Tecnologico");
+            disponible = buscarEstadoDisponible();
 
-            CambioEstadoRT cambioEstadoRT = new CambioEstadoRT();
-            cambioEstadoRT.fechaHoraDesde = new DateTime(2022, 6, 5);
-            cambioEstadoRT.fechaHoraHasta = null;
-            cambioEstadoRT.Estado = disponible;
-
-            RecursoTecnologico recurso1 = new RecursoTecnologico();
-            recurso1.numeroRT = 1;
-            recurso1.cambiosEstado.Add(cambioEstadoRT);
+            CambioEstadoRT cambioEstadoRT = new CambioEstadoRT(new DateTime(2022, 6, 5), null, disponible);
+            
+            RecursoTecnologico recurso1 = new RecursoTecnologico(1, null, null, null);
+            
+            recurso1.agregarCambioEstado(cambioEstadoRT);
 
             List<RecursoTecnologico> recursos = new List<RecursoTecnologico>();
             recursos.Add(recurso1);
 
-            AsignacionResponsableTecnicoRT asignacionResponsableTecnicoRT = new AsignacionResponsableTecnicoRT();
-            asignacionResponsableTecnicoRT.fechaDesde = DateTime.Now;
-            asignacionResponsableTecnicoRT.personalCientifico = personalCientifico;
-            asignacionResponsableTecnicoRT.recursoTecnologico = recursos;
+            AsignacionResponsableTecnicoRT asignacionResponsableTecnicoRT = new AsignacionResponsableTecnicoRT(DateTime.Now, personalCientifico, recursos);
+           
 
             List<AsignacionResponsableTecnicoRT> asignaciones = new List<AsignacionResponsableTecnicoRT>();
             asignaciones.Add(asignacionResponsableTecnicoRT);
