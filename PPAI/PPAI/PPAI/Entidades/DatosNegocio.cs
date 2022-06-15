@@ -34,6 +34,33 @@ namespace PPAI.Entidades
             usuarios = new List<Usuario>();
             Usuario usu1 = new Usuario("ppai", "ppai");
             usuarios.Add(usu1);
+            Usuario usu2 = new Usuario("user2", "0002");
+            usuarios.Add(usu2);
+            usuarios = new List<Usuario>();
+            Usuario usu3 = new Usuario("user3", "0003");
+            usuarios.Add(usu3);
+            usuarios = new List<Usuario>();
+            Usuario usu4 = new Usuario("user4", "0004");
+            usuarios.Add(usu4);
+            usuarios = new List<Usuario>();
+            Usuario usu5 = new Usuario("user5", "0005");
+            usuarios.Add(usu5);
+            usuarios = new List<Usuario>();
+            Usuario usu6 = new Usuario("user6", "0006");
+            usuarios.Add(usu6);
+            usuarios = new List<Usuario>();
+            Usuario usu7 = new Usuario("user7", "0007");
+            usuarios.Add(usu7);
+            usuarios = new List<Usuario>();
+            Usuario usu8 = new Usuario("user8", "0008");
+            usuarios.Add(usu8);
+            usuarios = new List<Usuario>();
+            Usuario usu9 = new Usuario("user9", "0009");
+            usuarios.Add(usu9);
+            usuarios = new List<Usuario>();
+            Usuario usu10 = new Usuario("user10", "0010");
+            usuarios.Add(usu10);
+
 
             //Sesiones
             sesiones = new List<Sesion>();
@@ -44,18 +71,61 @@ namespace PPAI.Entidades
             personalCientificos = new List<PersonalCientifico>();
             PersonalCientifico personal1 = new PersonalCientifico(82387, "Juan", "juan@gmail.com", "juan@gmail.com", usu1);
             personalCientificos.Add(personal1);
+            PersonalCientifico personal2 = new PersonalCientifico(85152, "Martin", "martin@gmail.com", "martin@gmail.com", usu2);
+            personalCientificos.Add(personal2);
+            PersonalCientifico personal3 = new PersonalCientifico(82356, "Pepe", "pepe@gmail.com", "pepe@gmail.com", usu3);
+            personalCientificos.Add(personal3);
+            PersonalCientifico personal4 = new PersonalCientifico(82487, "Facundo", "facundo@gmail.com", "facundo@gmail.com", usu4);
+            personalCientificos.Add(personal4);
+            PersonalCientifico personal5 = new PersonalCientifico(82587, "Carlos", "carlos@gmail.com", "carlos@gmail.com", usu5);
+            personalCientificos.Add(personal5);
+            PersonalCientifico personal6 = new PersonalCientifico(82797, "Ezequiel", "eze@gmail.com", "eze@gmail.com", usu6);
+            personalCientificos.Add(personal6);
+            PersonalCientifico personal7 = new PersonalCientifico(83387, "Camila", "cami@gmail.com", "cami@gmail.com", usu7);
+            personalCientificos.Add(personal7);
+            PersonalCientifico personal8 = new PersonalCientifico(84387, "Analia", "analuz@gmail.com", "analuz@gmail.com", usu8);
+            personalCientificos.Add(personal8);
+            PersonalCientifico personal9 = new PersonalCientifico(79387, "Federico", "federico@gmail.com", "federico@gmail.com", usu9);
+            personalCientificos.Add(personal9);
+            PersonalCientifico personal10 = new PersonalCientifico(85487, "Alejo", "ale@gmail.com", "ale@gmail.com", usu10);
+            personalCientificos.Add(personal10);
 
-            // Asignaciones Cienftifico CI
+
+            // Asignaciones Cientifico CI
             asignacionesCientificoCI = new List<AsignacionCientificoCI>();
             AsignacionCientificoCI asignacionPC1 = new AsignacionCientificoCI(personal1);
             asignacionesCientificoCI.Add(asignacionPC1);
+            AsignacionCientificoCI asignacionPC2 = new AsignacionCientificoCI(personal2);
+            asignacionesCientificoCI.Add(asignacionPC2);
+            AsignacionCientificoCI asignacionPC3 = new AsignacionCientificoCI(personal3);
+            asignacionesCientificoCI.Add(asignacionPC3);
+            AsignacionCientificoCI asignacionPC4 = new AsignacionCientificoCI(personal4);
+            asignacionesCientificoCI.Add(asignacionPC4);
+            AsignacionCientificoCI asignacionPC5 = new AsignacionCientificoCI(personal5);
+            asignacionesCientificoCI.Add(asignacionPC5);
+            
 
             // Turnos
             turnos = new List<Turno>();
             Turno turno1 = new Turno(new DateTime(2022, 6, 5), new DateTime(2022, 6, 18), new DateTime(2022, 7, 18), asignacionPC1);
             asignacionPC1.agregarTurnos(turno1);
             turnos.Add(turno1);
-            
+            Turno turno2 = new Turno(new DateTime(2022, 8, 4), new DateTime(2022, 8, 10), new DateTime(2022, 8, 12), asignacionPC1);
+            asignacionPC1.agregarTurnos(turno2);
+            turnos.Add(turno2);
+            Turno turno3 = new Turno(new DateTime(2022, 9, 2), new DateTime(2022, 9, 18), new DateTime(2022, 9, 20), asignacionPC2);
+            asignacionPC1.agregarTurnos(turno3);
+            turnos.Add(turno3);
+            Turno turno4 = new Turno(new DateTime(2022, 10, 11), new DateTime(2022, 10, 14), new DateTime(2022, 10, 22), asignacionPC3);
+            asignacionPC1.agregarTurnos(turno4);
+            turnos.Add(turno4);
+            Turno turno5 = new Turno(new DateTime(2022, 11, 1), new DateTime(2022, 11, 7), new DateTime(2022, 11, 27), asignacionPC4);
+            asignacionPC1.agregarTurnos(turno5);
+            turnos.Add(turno5);
+            Turno turno6 = new Turno(new DateTime(2022, 12, 4), new DateTime(2022, 12, 8), new DateTime(2022, 12, 12), asignacionPC5);
+            asignacionPC1.agregarTurnos(turno6);
+            turnos.Add(turno6);
+
 
             // Cambios Estado Turno
             cambiosEstadoTurno = new List<CambioEstadoTurno>();
@@ -63,23 +133,61 @@ namespace PPAI.Entidades
             // Cambios Estado RT
             cambiosEstadoRT = new List<CambioEstadoRT>();
             CambioEstadoRT cambio1 = new CambioEstadoRT(DateTime.Now.Date, datosSoporte.getEstadoDisponibleRecursoTecnologico());
-            
-            
+            CambioEstadoRT cambio2 = new CambioEstadoRT(new DateTime(2022, 05, 23), datosSoporte.getEstadoDisponibleRecursoTecnologico());
+
+
             // Recursos Tecnologicos
             //Recursos Tecnologicos
             recursos = new List<RecursoTecnologico>();
             RecursoTecnologico recursoTecnologico1 = new RecursoTecnologico(1, DateTime.Now.Date, datosSoporte.tiposRT[0], datosSoporte.modelos[0]);
             recursoTecnologico1.agregarCambioEstado(cambio1);
             recursos.Add(recursoTecnologico1);
+            RecursoTecnologico recursoTecnologico2 = new RecursoTecnologico(2, DateTime.Now.Date, datosSoporte.tiposRT[1], datosSoporte.modelos[1]);
+            recursoTecnologico2.agregarCambioEstado(cambio1);
+            recursos.Add(recursoTecnologico2);
+            RecursoTecnologico recursoTecnologico3 = new RecursoTecnologico(3, DateTime.Now.Date, datosSoporte.tiposRT[2], datosSoporte.modelos[2]);
+            recursoTecnologico3.agregarCambioEstado(cambio1);
+            recursos.Add(recursoTecnologico3);
+            RecursoTecnologico recursoTecnologico4 = new RecursoTecnologico(4, DateTime.Now.Date, datosSoporte.tiposRT[3], datosSoporte.modelos[3]);
+            recursoTecnologico4.agregarCambioEstado(cambio1);
+            recursos.Add(recursoTecnologico4);
+            RecursoTecnologico recursoTecnologico5 = new RecursoTecnologico(5, DateTime.Now.Date, datosSoporte.tiposRT[4], datosSoporte.modelos[4]);
+            recursoTecnologico5.agregarCambioEstado(cambio1);
+            recursos.Add(recursoTecnologico5);
+            RecursoTecnologico recursoTecnologico6 = new RecursoTecnologico(6, DateTime.Now.Date, datosSoporte.tiposRT[5], datosSoporte.modelos[5]);
+            recursoTecnologico6.agregarCambioEstado(cambio2);
+            recursos.Add(recursoTecnologico6);
+            RecursoTecnologico recursoTecnologico7 = new RecursoTecnologico(7, DateTime.Now.Date, datosSoporte.tiposRT[6], datosSoporte.modelos[6]);
+            recursoTecnologico7.agregarCambioEstado(cambio2);
+            recursos.Add(recursoTecnologico7);
+            RecursoTecnologico recursoTecnologico8 = new RecursoTecnologico(8, DateTime.Now.Date, datosSoporte.tiposRT[7], datosSoporte.modelos[7]);
+            recursoTecnologico8.agregarCambioEstado(cambio2);
+            recursos.Add(recursoTecnologico8);
+            RecursoTecnologico recursoTecnologico9 = new RecursoTecnologico(9, DateTime.Now.Date, datosSoporte.tiposRT[8], datosSoporte.modelos[8]);
+            recursoTecnologico9.agregarCambioEstado(cambio2);
+            recursos.Add(recursoTecnologico9);
+            RecursoTecnologico recursoTecnologico10 = new RecursoTecnologico(10, DateTime.Now.Date, datosSoporte.tiposRT[9], datosSoporte.modelos[9]);
+            recursoTecnologico10.agregarCambioEstado(cambio2);
+            recursos.Add(recursoTecnologico10);
 
             // Asignaciones Responsable Tecnico RT
             asignacionesResponsableTecnicoRT = new List<AsignacionResponsableTecnicoRT>();
             AsignacionResponsableTecnicoRT asignacionP1RT1 = new AsignacionResponsableTecnicoRT(DateTime.Now.Date, personal1);
             asignacionP1RT1.agregarRecurso(recursoTecnologico1);
+            asignacionP1RT1.agregarRecurso(recursoTecnologico2);
+            asignacionP1RT1.agregarRecurso(recursoTecnologico3);
+            asignacionP1RT1.agregarRecurso(recursoTecnologico4);
             asignacionesResponsableTecnicoRT.Add(asignacionP1RT1);
 
+            AsignacionResponsableTecnicoRT asignacionP2RT1 = new AsignacionResponsableTecnicoRT(DateTime.Now.Date, personal1);
+            asignacionP1RT1.agregarRecurso(recursoTecnologico1);
+            asignacionP1RT1.agregarRecurso(recursoTecnologico7);
+            asignacionP1RT1.agregarRecurso(recursoTecnologico8);
+            asignacionesResponsableTecnicoRT.Add(asignacionP2RT1);
 
-            
+
+
+
 
             this.datosSoporte = datosSoporte;
 

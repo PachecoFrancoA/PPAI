@@ -55,8 +55,9 @@ namespace PPAI.Entidades
             return this.fechaHoraFin;
         }
         
-        public void agregarCambioTurno(CambioEstadoTurno cambio)
+        public void agregarCambioTurno(DateTime fechaHoraDesde, Estado estadoACambiar)
         {
+            CambioEstadoTurno cambio = new CambioEstadoTurno(fechaHoraDesde, estadoACambiar);
             this.cambiosEstado.Add(cambio);
         }
 

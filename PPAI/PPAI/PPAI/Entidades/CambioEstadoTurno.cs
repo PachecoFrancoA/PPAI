@@ -17,10 +17,9 @@ namespace PPAI.Entidades
         {
 
         }
-        public CambioEstadoTurno(DateTime? fechaHoraDesde, DateTime? fechaHoraHasta, Estado estado)
+        public CambioEstadoTurno(DateTime? fechaHoraDesde, Estado estado)
         {
             this.fechaHoraDesde = fechaHoraDesde;
-            this.fechaHoraHasta = fechaHoraHasta;
             this.estado = estado;
         }
 
