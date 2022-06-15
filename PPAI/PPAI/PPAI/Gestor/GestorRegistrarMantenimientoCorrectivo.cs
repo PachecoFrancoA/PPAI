@@ -113,6 +113,7 @@ namespace PPAI.Gestor
 
         public void buscarReservaTurno(DateTime fechaFinPrevista)
         {
+            frmTurnos = new FrmTurnos(this);
             Estado estadoPdteConfirmacionTurno = datosSoporte.getEstadoPdteConfirmacionTurno();
             Estado estadoConfirmado = datosSoporte.getEstadoConfirmadoTurno();
 
@@ -134,10 +135,18 @@ namespace PPAI.Gestor
 
         public void tomarConfirmacion()
         {
+            frmConfirmacionDatos = new FrmConfirmacionDatos(this);
             frmConfirmacionDatos.solicitarConfirmacionNotificacion(recursoSeleccionado, fechaFinPrevista, motivo);
             frmConfirmacionDatos.Show();
         }
-        
+
+        public void tomarConfirmacionIngresoCorrectivo()
+        {
+            
+        }
+
+
+
         //private Estado buscarEstadoDisponible()
         //{
         //    return datosSoporte.getEstadoDisponibleRecursoTecnologico();

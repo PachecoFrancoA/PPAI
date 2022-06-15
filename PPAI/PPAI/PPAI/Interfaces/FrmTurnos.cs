@@ -30,7 +30,7 @@ namespace PPAI.Interfaces
 
         public void cargarGrilla(List<Turno> turnosConfirmadosOPdteConfirmacion)
         {
-            grid11.Formatear("Fecha, 50, C; Hora, 50, C; Cientifico, 10, C; Mail Cientifico, 100, C");
+            grid11.Formatear("Fecha, 50, C; Hora, 50, C; Cientifico, 50, C; Mail Cientifico, 100, C");
             DataTable tablaTurnos = new DataTable();
 
             DataColumn column;
@@ -73,6 +73,7 @@ namespace PPAI.Interfaces
         private void btn_confirmar_Click(object sender, EventArgs e)
         {
             this.gestor.tomarConfirmacion();
+            this.Dispose();
         }
     }
 }

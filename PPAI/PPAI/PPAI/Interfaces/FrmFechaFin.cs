@@ -41,7 +41,7 @@ namespace PPAI.Interfaces
             Tuple<DateTime?, string> tupla = new Tuple<DateTime?, string>(fechaFinPrevista, motivo);
             gestor.tomarFechaFinPrevistaYMotivo(tupla);
             MessageBox.Show("Fecha de fin prevista: " + fechaFinPrevista + "\nMotivo: " + motivo, "Datos Recolectados", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            
+            this.Dispose();
 
         }
 
