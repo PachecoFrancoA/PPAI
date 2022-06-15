@@ -91,5 +91,21 @@ namespace PPAI.Entidades
             }
             return false;
         }
+
+        public int compareTo(PersonalCientifico personalB)
+        {
+            if (this.legajo < personalB.legajo)
+            {
+                return -1;
+            }
+            else if (this.legajo > personalB.legajo)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
     }
 }

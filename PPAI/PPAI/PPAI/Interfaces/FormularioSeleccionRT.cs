@@ -70,22 +70,44 @@ namespace PPAI.Interfaces
                 //falta asignar los otros valores en el hardcodeo
                 row = tablaRecursos.NewRow();
                 row["Numero"] = r.getNumero();
-                row["Tipo"] = r.getTipoRT();
+                row["Tipo"] = r.getTipoRT().getNombre();
                 row["Marca"] = r.getMarca();
-                row["Modelo"] = r.getModelo();
+                row["Modelo"] = r.getModelo().getNombre();
                 tablaRecursos.Rows.Add(row);
             }
 
             grid11.Cargar(tablaRecursos);
+
+
+            
         }
         private void button1_Click(object sender, EventArgs e)
         {
 
+            if (grid11.SelectedRows.Count == 1)
+            {
+                int numeroRT = int.Parse(grid11.SelectedRows[0].Cells[0].Value.ToString());
+                gestor.tomarSeleccionRT(numeroRT);
+                this.Dispose();
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un recurso tecnologico", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            
         }
+
+        
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void btn_salir_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

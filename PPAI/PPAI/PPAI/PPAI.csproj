@@ -53,6 +53,7 @@
     <Compile Include="Entidades\AsignacionResponsableTecnicoRT.cs" />
     <Compile Include="Entidades\CambioEstadoRT.cs" />
     <Compile Include="Entidades\CambioEstadoTurno.cs" />
+    <Compile Include="Entidades\DatosNegocio.cs" />
     <Compile Include="Entidades\DatosSoporte.cs" />
     <Compile Include="Entidades\Estado.cs" />
     <Compile Include="Entidades\Marca.cs" />

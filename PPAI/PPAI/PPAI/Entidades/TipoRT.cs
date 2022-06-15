@@ -40,5 +40,10 @@ namespace PPAI.Entidades
         {
             return this.descripcion;
         }
+
+        public int compareTo(TipoRT tipoB)
+        {
+            return this.nombre.CompareTo(tipoB.getNombre());
+        }
     }
 }

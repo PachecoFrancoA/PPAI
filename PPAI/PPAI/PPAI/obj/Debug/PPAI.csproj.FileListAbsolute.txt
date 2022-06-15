@@ -44,3 +44,18 @@ C:\Users\Franco\Desktop\PPAI\PPAI\PPAI\PPAI\obj\Debug\PPAI.csproj.CoreCompileInp
 C:\Users\Franco\Desktop\PPAI\PPAI\PPAI\PPAI\obj\Debug\PPAI.exe
 C:\Users\Franco\Desktop\PPAI\PPAI\PPAI\PPAI\obj\Debug\PPAI.pdb
 C:\Users\Franco\Desktop\PPAI\PPAI\PPAI\PPAI\obj\Debug\PPAI.Interfaces.frmMenu.resources
+C:\AA Facu Albano\DSI\PPAI\PPAI\PPAI\PPAI\PPAI\bin\Debug\PPAI.exe.config
+C:\AA Facu Albano\DSI\PPAI\PPAI\PPAI\PPAI\PPAI\bin\Debug\PPAI.exe
+C:\AA Facu Albano\DSI\PPAI\PPAI\PPAI\PPAI\PPAI\bin\Debug\PPAI.pdb
+C:\AA Facu Albano\DSI\PPAI\PPAI\PPAI\PPAI\PPAI\obj\Debug\PPAI.csproj.AssemblyReference.cache
+C:\AA Facu Albano\DSI\PPAI\PPAI\PPAI\PPAI\PPAI\obj\Debug\PPAI.csproj.SuggestedBindingRedirects.cache
+C:\AA Facu Albano\DSI\PPAI\PPAI\PPAI\PPAI\PPAI\obj\Debug\PPAI.Interfaces.FormularioSeleccionRT.resources
+C:\AA Facu Albano\DSI\PPAI\PPAI\PPAI\PPAI\PPAI\obj\Debug\PPAI.Interfaces.FrmConfirmacionDatos.resources
+C:\AA Facu Albano\DSI\PPAI\PPAI\PPAI\PPAI\PPAI\obj\Debug\PPAI.Interfaces.FrmFechaFin.resources
+C:\AA Facu Albano\DSI\PPAI\PPAI\PPAI\PPAI\PPAI\obj\Debug\PPAI.Interfaces.FrmTurnos.resources
+C:\AA Facu Albano\DSI\PPAI\PPAI\PPAI\PPAI\PPAI\obj\Debug\PPAI.Interfaces.frmMenu.resources
+C:\AA Facu Albano\DSI\PPAI\PPAI\PPAI\PPAI\PPAI\obj\Debug\PPAI.Properties.Resources.resources
+C:\AA Facu Albano\DSI\PPAI\PPAI\PPAI\PPAI\PPAI\obj\Debug\PPAI.csproj.GenerateResource.cache
+C:\AA Facu Albano\DSI\PPAI\PPAI\PPAI\PPAI\PPAI\obj\Debug\PPAI.csproj.CoreCompileInputs.cache
+C:\AA Facu Albano\DSI\PPAI\PPAI\PPAI\PPAI\PPAI\obj\Debug\PPAI.exe
+C:\AA Facu Albano\DSI\PPAI\PPAI\PPAI\PPAI\PPAI\obj\Debug\PPAI.pdb

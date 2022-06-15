@@ -13,6 +13,16 @@ namespace PPAI.Entidades
         private Estado estado { get; set; }
 
 
+        public CambioEstadoTurno()
+        {
+
+        }
+        public CambioEstadoTurno(DateTime? fechaHoraDesde, DateTime? fechaHoraHasta, Estado estado)
+        {
+            this.fechaHoraDesde = fechaHoraDesde;
+            this.fechaHoraHasta = fechaHoraHasta;
+            this.estado = estado;
+        }
 
         public void setFechaHoraDesde(DateTime? fechaHoraDesde)
         {
@@ -42,6 +52,42 @@ namespace PPAI.Entidades
         public Estado getEstado()
         {
             return this.estado;
+        }
+
+        public bool esUltimo()
+        {
+            if (this.fechaHoraHasta.Equals(null))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool esConfOPdteConf(Estado estadoConfirmado, Estado estadoPdteConfirmacion)
+        {
+            if (this.estado.Equals(estadoConfirmado) || this.estado.Equals(estadoPdteConfirmacion))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+        public bool estaDentroPlazoMantenimiento(DateTime? fechaFinPrevista)
+        {
+            if (this.fechaHoraDesde.Value.Date <= DateTime.Now.Date && this.fechaHoraHasta.Value.Date >= fechaFinPrevista)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

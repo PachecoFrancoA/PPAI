@@ -12,6 +12,7 @@ namespace PPAI.Gestor
     {
         public GestorRegistrarMantenimientoCorrectivo(frmMenu _principal)
         {
+
             principal = _principal;
         }
         public frmMenu principal;
@@ -19,12 +20,12 @@ namespace PPAI.Gestor
         public AsignacionResponsableTecnicoRT asignacionResponsableTecnico { get; set; }
 
         public Usuario usuario;
-        public Sesion sesionActual; 
-        
+        public Sesion sesionActual;
+
         public FormularioSeleccionRT pantallaRT;
 
         public Estado estadoRT { get; set; }
-        public List<RecursoTecnologico> recursoTecnologicos { get; set; }
+        public List<RecursoTecnologico> recursosTecnologicosDisponibles { get; set; }
         public RecursoTecnologico recursoSeleccionado { get; set; }
         public Estado disponible { get; set; }
 
@@ -32,71 +33,154 @@ namespace PPAI.Gestor
 
         public DatosSoporte datosSoporte;
 
+        public DatosNegocio datosNegocio;
+
+        public FrmFechaFin frmFechaFin;
+
+        public DateTime? fechaFinPrevista;
+
+        public string motivo;
+
+        public FrmTurnos frmTurnos;
+
+        public FrmConfirmacionDatos frmConfirmacionDatos;
 
 
         public void opcionRegistrarMantenimientoCorrectivoRT()
         {
-            this.usuario = new Usuario("ppai", "ppai");
-            this.sesionActual = new Sesion(DateTime.Now, usuario);
-            this.datosSoporte = new DatosSoporte();
-
             pantallaRT = new FormularioSeleccionRT(this);
 
-            disponible = buscarEstadoDisponible();
+            this.datosSoporte = new DatosSoporte();
+            this.datosNegocio = new DatosNegocio(datosSoporte);
 
-            asignacionResponsableTecnico = buscarAsginacionResponsable(sesionActual.getUsuario());
+            this.sesionActual = datosNegocio.getSesionActual();
+            this.usuario = datosNegocio.getUsuarioLogueado(sesionActual);
 
-            recursoTecnologicos = buscarRTDisponibles(asignacionResponsableTecnico, disponible);
+            recursosTecnologicosDisponibles = buscarRTDisponibles(this.usuario);
 
-            pantallaRT.solicitarSeleccionRT(recursoTecnologicos);
+            agruparPorTipoDeRecurso(recursosTecnologicosDisponibles);
+
+            pantallaRT.solicitarSeleccionRT(recursosTecnologicosDisponibles);
+
             pantallaRT.Show();
             //recursoSeleccionado = enviarASolicitarSeleccion(recursoTecnologicos);
+
         }
 
-        private Estado buscarEstadoDisponible()
+
+        private List<RecursoTecnologico> buscarRTDisponibles(Usuario usuario)
         {
-            return datosSoporte.getEstadoDisponibleRecursoTecnologico();
+
+            return datosNegocio.getRecursosTecnologicosDisponibles(usuario);
+
+        }
+
+        private void agruparPorTipoDeRecurso(List<RecursoTecnologico> recursosTecnologicosDisponibles)
+        {
+            //ordenamiento
+            recursosTecnologicosDisponibles.Sort((x, y) => x.getTipoRT().compareTo(y.getTipoRT()));
+        }
+
+        public void tomarSeleccionRT(int numeroRTSeleccionado)
+        {
+            foreach (RecursoTecnologico recursoTecnologico in this.recursosTecnologicosDisponibles)
+            {
+                if (recursoTecnologico.esTuNumero(numeroRTSeleccionado))
+                {
+                    this.recursoSeleccionado = recursoTecnologico;
+                }
+            }
+
+            // reordenar
+            solicitarFechaFinPrevista();
+
+        }
+
+        public void solicitarFechaFinPrevista()
+        {
+            frmFechaFin = new FrmFechaFin(this);
+            frmFechaFin.Show();
+
+        }
+
+        public void tomarFechaFinPrevistaYMotivo(Tuple<DateTime?, string> tupla)
+        {
+            this.fechaFinPrevista = tupla.Item1;
+            this.motivo = tupla.Item2;
+
+            buscarReservaTurno((DateTime) fechaFinPrevista);
+        }
+
+        public void buscarReservaTurno(DateTime fechaFinPrevista)
+        {
+            Estado estadoPdteConfirmacionTurno = datosSoporte.getEstadoPdteConfirmacionTurno();
+            Estado estadoConfirmado = datosSoporte.getEstadoConfirmadoTurno();
+
+            List<Turno> turnosConfirmadosOPdteConfirmacion = recursoSeleccionado.buscarTurnosConfOPdteConf(fechaFinPrevista, estadoPdteConfirmacionTurno, estadoConfirmado);
+
+            agruparPorPersonalCientifico(turnosConfirmadosOPdteConfirmacion);
+
+            frmTurnos.solicitarConfirmacionAMantenimiento(turnosConfirmadosOPdteConfirmacion);
+            frmTurnos.Show();
+
+
+        }
+
+        private void agruparPorPersonalCientifico(List<Turno> turnosConfirmadosOPdteConfirmacion)
+        {
+            //ordenamiento
+            turnosConfirmadosOPdteConfirmacion.Sort((x, y) => x.compareTo(y));
+        }
+
+        public void tomarConfirmacion()
+        {
+            frmConfirmacionDatos.solicitarConfirmacionNotificacion(recursoSeleccionado, fechaFinPrevista, motivo);
+            frmConfirmacionDatos.Show();
         }
         
-        private AsignacionResponsableTecnicoRT buscarAsginacionResponsable(Usuario usuario)
-        {
-            DateTime fechaActual = DateTime.Now;
+        //private Estado buscarEstadoDisponible()
+        //{
+        //    return datosSoporte.getEstadoDisponibleRecursoTecnologico();
+        //}
 
-            PersonalCientifico personalCientifico = new PersonalCientifico(82387, "Juan", "juan@gmail.com", "juan@gmail.com", usuario);
+        //private AsignacionResponsableTecnicoRT buscarAsginacionResponsable(Usuario usuario)
+        //{
 
-            disponible = buscarEstadoDisponible();
+        //    PersonalCientifico personalCientifico = datosNegocio.getPersonalCientificoUsuario(usuario);
 
-            CambioEstadoRT cambioEstadoRT = new CambioEstadoRT(new DateTime(2022, 6, 5), null, disponible);
-            
-            RecursoTecnologico recurso1 = new RecursoTecnologico(1, null, null, null);
-            
-            recurso1.agregarCambioEstado(cambioEstadoRT);
+        //    disponible = buscarEstadoDisponible();
 
-            List<RecursoTecnologico> recursos = new List<RecursoTecnologico>();
-            recursos.Add(recurso1);
+        //    CambioEstadoRT cambioEstadoRT = new CambioEstadoRT(new DateTime(2022, 6, 5), null, disponible);
 
-            AsignacionResponsableTecnicoRT asignacionResponsableTecnicoRT = new AsignacionResponsableTecnicoRT(DateTime.Now, personalCientifico, recursos);
-           
+        //    RecursoTecnologico recurso1 = new RecursoTecnologico(1, null, null, null);
 
-            List<AsignacionResponsableTecnicoRT> asignaciones = new List<AsignacionResponsableTecnicoRT>();
-            asignaciones.Add(asignacionResponsableTecnicoRT);
+        //    recurso1.agregarCambioEstado(cambioEstadoRT);
 
-            foreach (AsignacionResponsableTecnicoRT asignacion in asignaciones)
-            {
-                if ((asignacion.esTuUsuario(usuario)))
-                {
-                    return asignacion;
-                }
-                //&& asignacion.esActual()
-            }
-            return null;
+        //    List<RecursoTecnologico> recursos = new List<RecursoTecnologico>();
+        //    recursos.Add(recurso1);
 
-        }
-        private List<RecursoTecnologico> buscarRTDisponibles(AsignacionResponsableTecnicoRT asignacion, Estado disponible)
-        {
-            return asignacion.misRTDisponibles(disponible);
-            //return asignacion.mostrarRecursos();
+        //    AsignacionResponsableTecnicoRT asignacionResponsableTecnicoRT = new AsignacionResponsableTecnicoRT(DateTime.Now, personalCientifico, recursos);
 
-        }
+
+        //    List<AsignacionResponsableTecnicoRT> asignaciones = new List<AsignacionResponsableTecnicoRT>();
+        //    asignaciones.Add(asignacionResponsableTecnicoRT);
+
+        //    foreach (AsignacionResponsableTecnicoRT asignacion in asignaciones)
+        //    {
+        //        if ((asignacion.esTuUsuario(usuario)))
+        //        {
+        //            return asignacion;
+        //        }
+        //        //&& asignacion.esActual()
+        //    }
+        //    return null;
+
+        //}
+        //private List<RecursoTecnologico> buscarRTDisponibles(AsignacionResponsableTecnicoRT asignacion, Estado disponible)
+        //{
+        //    return asignacion.misRTDisponibles(disponible);
+        //    //return asignacion.mostrarRecursos();
+
+        //}
     }
 }

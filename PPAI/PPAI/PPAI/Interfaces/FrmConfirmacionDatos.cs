@@ -12,6 +12,8 @@ namespace PPAI.Interfaces
 {
     public partial class FrmConfirmacionDatos : Form
     {
+
+        
         public FrmConfirmacionDatos()
         {
             InitializeComponent();

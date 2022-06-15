@@ -12,26 +12,25 @@ namespace PPAI.Entidades
         private DateTime? fechaHoraHasta { get; set; }
         private Estado estado { get; set; }
 
-        public CambioEstadoRT(DateTime? fechaHoraDesde, DateTime? fechaHoraHasta, Estado estado)
+        public CambioEstadoRT(DateTime? fechaHoraDesde, Estado estado)
         {
             this.fechaHoraDesde = fechaHoraDesde;
-            this.fechaHoraHasta = fechaHoraHasta;
             this.estado = estado;
+            this.fechaHoraHasta = null;
         }
 
-        public Boolean esUltimo()
+        public bool esUltimo()
         {
-            DateTime fechaActual = DateTime.Now;
-            if (this.fechaHoraHasta == null)
+            if (this.fechaHoraHasta.Equals(null))
             {
                 return true;
             }
             return false;
         }
 
-        public Boolean esDisponible(Estado disponible)
+        public bool esDisponible(Estado disponible)
         {
-            if (this.estado == disponible)
+            if (this.estado.Equals(disponible))
             {
                 return true;
             }

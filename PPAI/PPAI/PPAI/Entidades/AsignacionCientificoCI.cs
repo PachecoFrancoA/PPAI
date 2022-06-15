@@ -13,10 +13,10 @@ namespace PPAI.Entidades
         private PersonalCientifico personalCientifico { get; set; }
         private List<Turno> turnos { get; set; }
 
-        public AsignacionCientificoCI(PersonalCientifico personalCientifico, List<Turno> turnos)
+        public AsignacionCientificoCI(PersonalCientifico personalCientificos)
         {
             this.personalCientifico = personalCientifico;
-            this.turnos = turnos;
+            this.turnos = new List<Turno>();
         }
 
 
@@ -39,6 +39,16 @@ namespace PPAI.Entidades
         public void setTurnos(List<Turno> turnos)
         {
             this.turnos = turnos;
+        }
+
+        public void agregarTurnos(Turno turno)
+        {
+            this.turnos.Add(turno);
+        }
+
+        public int compareTo(AsignacionCientificoCI asignacionB)
+        {
+            return this.personalCientifico.compareTo(asignacionB.getPersonalCientifico());
         }
 
 

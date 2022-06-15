@@ -13,11 +13,11 @@ namespace PPAI.Entidades
         private PersonalCientifico personalCientifico { get; set; }
         private List<RecursoTecnologico> recursoTecnologico { get; set; }
 
-        public AsignacionResponsableTecnicoRT(DateTime fechaDesde, PersonalCientifico personalCientifico, List<RecursoTecnologico> recursos)
+        public AsignacionResponsableTecnicoRT(DateTime fechaDesde, PersonalCientifico personalCientifico)
         {
             this.fechaDesde = fechaDesde;
             this.personalCientifico = personalCientifico;
-            this.recursoTecnologico = recursos;
+            this.recursoTecnologico = new List<RecursoTecnologico>();
         }
 
         public PersonalCientifico getPersonalCientifico()
@@ -79,7 +79,7 @@ namespace PPAI.Entidades
             return false;
         }
 
-        public List<RecursoTecnologico> misRTDisponibles(Estado disponible)
+        public List<RecursoTecnologico> getRTDisponibles(Estado disponible)
         {
             List<RecursoTecnologico> recursos = new List<RecursoTecnologico>();
             foreach (RecursoTecnologico r in this.recursoTecnologico)
@@ -100,6 +100,11 @@ namespace PPAI.Entidades
                 recursos.Add(r);
             }
             return recursos;
+        }
+
+        public void agregarRecurso(RecursoTecnologico r)
+        {
+            this.recursoTecnologico.Add(r);
         }
 
     }

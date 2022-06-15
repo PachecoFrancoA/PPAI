@@ -7,7 +7,7 @@ using PPAI.Entidades;
 
 namespace PPAI.Entidades
 {
-    public class RecursoTecnologico
+    public class RecursoTecnologico 
     {
 
         // hacer un metodo para que se ordenen solos segun el tipo de recurso
@@ -19,6 +19,8 @@ namespace PPAI.Entidades
 
         private List<CambioEstadoRT> cambiosEstado;
 
+        private List<Turno> turnos;
+
         public RecursoTecnologico(int numero, DateTime? fechaAlta, TipoRT tipoRT, Modelo modelo)
         {
             this.numeroRT = numero;
@@ -26,7 +28,7 @@ namespace PPAI.Entidades
             this.tipoRT = tipoRT;
             this.modelo = modelo;
             this.cambiosEstado = new List<CambioEstadoRT>();
-
+            this.turnos = new List<Turno>();
         }
 
         
@@ -65,7 +67,12 @@ namespace PPAI.Entidades
             this.modelo = modelo;
         }
 
-        public Boolean estaDisponible(Estado disponible)
+        public void setTipoRT(TipoRT tipoRT)
+        {
+            this.tipoRT = tipoRT;
+        }
+
+        public bool estaDisponible(Estado disponible)
         {
             foreach (CambioEstadoRT cambio in this.cambiosEstado)
             {
@@ -85,7 +92,42 @@ namespace PPAI.Entidades
             this.cambiosEstado.Add(cambio);
         }
 
+        public void agregarTurno(Turno turno)
+        {
+            this.turnos.Add(turno);
+        }
+        
+        public bool esTuNumero(int num)
+        {
+            if (this.numeroRT == num)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
+        public List<Turno> getTurnos()
+        {
+            return this.turnos;
+        }
+
+        public List<Turno> buscarTurnosConfOPdteConf(DateTime fechaHoraFin, Estado estadoPdteConfirmacion, Estado estadoConfirmado)
+        {
+            List<Turno> turnosConfirmadosOPdteConfirmacion = new List<Turno>();
+
+            foreach (Turno turno in this.turnos)
+            {
+                if (turno.esConfirmadoOPdteConfirmacion(fechaHoraFin, estadoPdteConfirmacion, estadoConfirmado))
+                {
+                    turnosConfirmadosOPdteConfirmacion.Add(turno);
+                }
+            }
+            
+            return turnosConfirmadosOPdteConfirmacion;
+        }
 
 
     }

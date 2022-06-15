@@ -12,7 +12,7 @@ namespace PPAI.Entidades
         
         public List<TipoRT> tiposRT;
 
-        public List<RecursoTecnologico> recursos ;
+        
 
         public List<Marca> marcas ;
 
@@ -20,14 +20,29 @@ namespace PPAI.Entidades
 
         public DatosSoporte()
         {
+            // Estados
             estados = new List<Estado>();
+            estados.Add(new Estado("Disponible", "RecursoTecnologico"));
+
+            estados.Add(new Estado("Confirmado", "Turno"));
+            estados.Add(new Estado("PendienteConfirmacion", "Turno"));
+
+            //Tipos RT
             tiposRT = new List<TipoRT>();
-            recursos = new List<RecursoTecnologico>();
+            TipoRT tipo1 = new TipoRT("Herramientas", "Herramientas");
+            tiposRT.Add(tipo1);
+
+
+            //Marcas
             marcas = new List<Marca>();
+            Marca marca1 = new Marca("Steel");
+            marcas.Add(marca1);
+            
+            //Modelos
             modelos = new List<Modelo>();
-
-            estados.Add(new Estado("Disponible", "Recurso Tecnologico"));
-
+            Modelo modelo1 = new Modelo("Bokan", marca1);
+            modelos.Add(modelo1);
+            
         }
 
         public Estado getEstadoDisponibleRecursoTecnologico()
@@ -35,6 +50,30 @@ namespace PPAI.Entidades
             foreach(Estado estado in this.estados)
             {
                 if (estado.sosDisponibleDeRecursoTecnologico())
+                {
+                    return estado;
+                }
+            }
+            return null;
+        }
+
+        public Estado getEstadoPdteConfirmacionTurno()
+        {
+            foreach (Estado estado in this.estados)
+            {
+                if (estado.sosPdteConfirmacionTurno())
+                {
+                    return estado;
+                }
+            }
+            return null;
+        }
+        
+        public Estado getEstadoConfirmadoTurno()
+        {
+            foreach (Estado estado in this.estados)
+            {
+                if (estado.sosConfirmado())
                 {
                     return estado;
                 }

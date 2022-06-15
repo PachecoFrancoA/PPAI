@@ -34,7 +34,7 @@
 
         public bool sosDisponibleDeRecursoTecnologico()
         {
-            if (nombre == "Disponible" && ambito == "RecursoTecnologico")
+            if (nombre.Equals("Disponible") && ambito.Equals("RecursoTecnologico"))
             {
                 return true;
             }
@@ -44,6 +44,29 @@
             }
         }
 
+        public bool sosPdteConfirmacionTurno()
+        {
+            if (nombre.Equals("PendienteConfirmacion") && ambito.Equals("Turno"))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool sosConfirmado()
+        {
+            if (nombre.Equals("Confirmado") && ambito.Equals("Turno"))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
 
     }
