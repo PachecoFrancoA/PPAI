@@ -68,6 +68,29 @@
             }
         }
 
+        public bool sosCanceladoPorMCTurno()
+        {
+            if (nombre.Equals("CanceladoPorMC") && ambito.Equals("Turno"))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool sosConIngresoEnMCRecursoTecnologico()
+        {
+            if (nombre.Equals("ConIngresoEnMC") && ambito.Equals("RecursoTecnologico"))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
     }
     

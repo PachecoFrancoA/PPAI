@@ -13,7 +13,7 @@ namespace PPAI.Entidades
         private PersonalCientifico personalCientifico { get; set; }
         private List<Turno> turnos { get; set; }
 
-        public AsignacionCientificoCI(PersonalCientifico personalCientificos)
+        public AsignacionCientificoCI(PersonalCientifico personalCientifico)
         {
             this.personalCientifico = personalCientifico;
             this.turnos = new List<Turno>();

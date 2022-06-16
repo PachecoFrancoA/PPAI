@@ -23,9 +23,11 @@ namespace PPAI.Entidades
             // Estados
             estados = new List<Estado>();
             estados.Add(new Estado("Disponible", "RecursoTecnologico"));
+            estados.Add(new Estado("ConIngresoEnMC", "RecursoTecnologico"));
 
             estados.Add(new Estado("Confirmado", "Turno"));
             estados.Add(new Estado("PendienteConfirmacion", "Turno"));
+            estados.Add(new Estado("CanceladoPorMC", "Turno"));
 
             //Tipos RT
             tiposRT = new List<TipoRT>();
@@ -121,6 +123,31 @@ namespace PPAI.Entidades
             foreach (Estado estado in this.estados)
             {
                 if (estado.sosConfirmado())
+                {
+                    return estado;
+                }
+            }
+            return null;
+        }
+
+        public Estado getEstadoCanceladoPorMC()
+        {
+            foreach (Estado estado in this.estados)
+            {
+                if (estado.sosCanceladoPorMCTurno())
+                {
+                    return estado;
+                }
+            }
+            return null;
+        }
+
+        public Estado getEstadoConIngresoEnMC()
+        {
+
+            foreach (Estado estado in this.estados)
+            {
+                if (estado.sosConIngresoEnMCRecursoTecnologico())
                 {
                     return estado;
                 }

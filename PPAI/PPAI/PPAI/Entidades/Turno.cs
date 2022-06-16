@@ -55,7 +55,7 @@ namespace PPAI.Entidades
             return this.fechaHoraFin;
         }
         
-        public void agregarCambioTurno(DateTime fechaHoraDesde, Estado estadoACambiar)
+        public void agregarCambioEstadoTurno(DateTime fechaHoraDesde, Estado estadoACambiar)
         {
             CambioEstadoTurno cambio = new CambioEstadoTurno(fechaHoraDesde, estadoACambiar);
             this.cambiosEstado.Add(cambio);
@@ -95,6 +95,21 @@ namespace PPAI.Entidades
         {
             return this.asignacionCientificoCI.compareTo(turnoB.getAsignacionCientificoCI());
         }
-       
+
+        public void cancelarPorMC(Estado estadoCancelado)
+        {
+            foreach (CambioEstadoTurno cambioUltimo in this.cambiosEstado)
+            {
+                if (cambioUltimo.esUltimo())
+                {
+                    cambioUltimo.setFechaHoraHasta(DateTime.Now);
+                    break;
+                }
+            }
+            
+            CambioEstadoTurno cambio = new CambioEstadoTurno(DateTime.Now, estadoCancelado);
+            this.cambiosEstado.Add(cambio);
+        }
+
     }
 }

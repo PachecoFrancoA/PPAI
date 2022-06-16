@@ -21,6 +21,8 @@ namespace PPAI.Entidades
 
         private List<Turno> turnos;
 
+        private List<Mantenimiento> mantenimientos;
+
         public RecursoTecnologico(int numero, DateTime? fechaAlta, TipoRT tipoRT, Modelo modelo)
         {
             this.numeroRT = numero;
@@ -29,6 +31,7 @@ namespace PPAI.Entidades
             this.modelo = modelo;
             this.cambiosEstado = new List<CambioEstadoRT>();
             this.turnos = new List<Turno>();
+            this.mantenimientos = new List<Mantenimiento>();
         }
 
         
@@ -87,11 +90,12 @@ namespace PPAI.Entidades
             return false;
         }
 
-        public void agregarCambioEstado(CambioEstadoRT cambio)
+        public void agregarCambioEstado(Estado estado)
         {
+            CambioEstadoRT cambio = new CambioEstadoRT(DateTime.Now, estado);
             this.cambiosEstado.Add(cambio);
         }
-
+        
         public void agregarTurno(Turno turno)
         {
             this.turnos.Add(turno);
@@ -129,6 +133,22 @@ namespace PPAI.Entidades
             return turnosConfirmadosOPdteConfirmacion;
         }
 
+        public void crearMantenimientoCorrectivo(DateTime? fechaFinPrevista, string motivo)
+        {
+            Mantenimiento nuevo = new Mantenimiento(DateTime.Now, fechaFinPrevista, motivo);
+            this.mantenimientos.Add(nuevo);
+        }
+
+        public void cancelarTurnos(List<Turno> turnosACancelar, Estado canceladoPorMC)
+        {
+            foreach (Turno turno in turnosACancelar)
+            {
+                turno.cancelarPorMC(canceladoPorMC);
+            }
+        }
+
+        
+        
 
     }
 }

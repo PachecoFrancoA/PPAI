@@ -23,7 +23,7 @@ namespace PPAI.Interfaces
             InitializeComponent();
         }
 
-        public void solicitarConfirmacionNotificacion(RecursoTecnologico recurso, DateTime? FechaFinPrevista, string motivo)
+        public void solicitarConfirmacionNotificacion(RecursoTecnologico recurso, DateTime? FechaFinPrevista)
         {
             cargarGrilla(recurso, FechaFinPrevista);
         }

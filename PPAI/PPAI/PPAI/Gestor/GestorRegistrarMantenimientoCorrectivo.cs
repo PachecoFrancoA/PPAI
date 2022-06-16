@@ -45,6 +45,8 @@ namespace PPAI.Gestor
 
         public FrmConfirmacionDatos frmConfirmacionDatos;
 
+        public List<Turno> turnosConfirmadosOPdteConfirmacion;
+
 
         public void opcionRegistrarMantenimientoCorrectivoRT()
         {
@@ -117,7 +119,7 @@ namespace PPAI.Gestor
             Estado estadoPdteConfirmacionTurno = datosSoporte.getEstadoPdteConfirmacionTurno();
             Estado estadoConfirmado = datosSoporte.getEstadoConfirmadoTurno();
 
-            List<Turno> turnosConfirmadosOPdteConfirmacion = recursoSeleccionado.buscarTurnosConfOPdteConf(fechaFinPrevista, estadoPdteConfirmacionTurno, estadoConfirmado);
+            turnosConfirmadosOPdteConfirmacion = recursoSeleccionado.buscarTurnosConfOPdteConf(fechaFinPrevista, estadoPdteConfirmacionTurno, estadoConfirmado);
 
             agruparPorPersonalCientifico(turnosConfirmadosOPdteConfirmacion);
 
@@ -133,17 +135,59 @@ namespace PPAI.Gestor
             turnosConfirmadosOPdteConfirmacion.Sort((x, y) => x.compareTo(y));
         }
 
+        // el motivo no se usa en este metodo
         public void tomarConfirmacion()
         {
             frmConfirmacionDatos = new FrmConfirmacionDatos(this);
-            frmConfirmacionDatos.solicitarConfirmacionNotificacion(recursoSeleccionado, fechaFinPrevista, motivo);
+            frmConfirmacionDatos.solicitarConfirmacionNotificacion(recursoSeleccionado, fechaFinPrevista);
             frmConfirmacionDatos.Show();
         }
 
         public void tomarConfirmacionIngresoCorrectivo()
         {
-            
+
+            this.crearMantenimientoCorrectivoRT();
+
+            Estado estadoCanceladoPorMC = buscarEstadoCanceladoPorMantenimientCorrectivo();
+
+            Estado estadoConIngresoEnMC = buscarEstadoConIngresoEnMantenimiento();
+
+            this.actualizarEstadoTurnos(estadoCanceladoPorMC);
+
+            this.recursoSeleccionado.agregarCambioEstado(estadoConIngresoEnMC);
+
+            this.generarMail();
+
         }
+
+        public void actualizarEstadoTurnos(Estado estadoCanceladoPorMC)
+        {
+            recursoSeleccionado.cancelarTurnos(turnosConfirmadosOPdteConfirmacion, estadoCanceladoPorMC);
+        }
+
+        public void crearMantenimientoCorrectivoRT()
+        {
+            recursoSeleccionado.crearMantenimientoCorrectivo(fechaFinPrevista, motivo);
+        }
+
+        public Estado buscarEstadoCanceladoPorMantenimientCorrectivo()
+        {
+            Estado estadoCanceladoPorMC = datosSoporte.getEstadoCanceladoPorMC();
+            return estadoCanceladoPorMC;
+        }
+
+        public Estado buscarEstadoConIngresoEnMantenimiento()
+        {
+            Estado estadoConIngresoEnMantenimiento = datosSoporte.getEstadoConIngresoEnMC();
+            return estadoConIngresoEnMantenimiento;
+        }
+
+        public void generarMail()
+        {
+            //hacer frm que diga enviando mail
+        }
+        
+       
 
 
 

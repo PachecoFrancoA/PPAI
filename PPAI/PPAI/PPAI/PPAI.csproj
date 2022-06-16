@@ -56,6 +56,7 @@
     <Compile Include="Entidades\DatosNegocio.cs" />
     <Compile Include="Entidades\DatosSoporte.cs" />
     <Compile Include="Entidades\Estado.cs" />
+    <Compile Include="Entidades\Mantenimiento.cs" />
     <Compile Include="Entidades\Marca.cs" />
     <Compile Include="Entidades\Modelo.cs" />
     <Compile Include="Entidades\PersonalCientifico.cs" />

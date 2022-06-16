@@ -90,6 +90,45 @@ namespace PPAI.Entidades
             PersonalCientifico personal10 = new PersonalCientifico(85487, "Alejo", "ale@gmail.com", "ale@gmail.com", usu10);
             personalCientificos.Add(personal10);
 
+            // Cambios Estado RT
+            cambiosEstadoRT = new List<CambioEstadoRT>();
+            CambioEstadoRT cambio1 = new CambioEstadoRT(DateTime.Now.Date, datosSoporte.getEstadoDisponibleRecursoTecnologico());
+            CambioEstadoRT cambio2 = new CambioEstadoRT(new DateTime(2022, 05, 23), datosSoporte.getEstadoDisponibleRecursoTecnologico());
+
+
+            // Recursos Tecnologicos
+            //Recursos Tecnologicos
+            recursos = new List<RecursoTecnologico>();
+            RecursoTecnologico recursoTecnologico1 = new RecursoTecnologico(1, DateTime.Now.Date, datosSoporte.tiposRT[0], datosSoporte.modelos[0]);
+            recursoTecnologico1.agregarCambioEstado(datosSoporte.getEstadoDisponibleRecursoTecnologico());
+            recursos.Add(recursoTecnologico1);
+            RecursoTecnologico recursoTecnologico2 = new RecursoTecnologico(2, DateTime.Now.Date, datosSoporte.tiposRT[1], datosSoporte.modelos[1]);
+            recursoTecnologico2.agregarCambioEstado(datosSoporte.getEstadoDisponibleRecursoTecnologico());
+            recursos.Add(recursoTecnologico2);
+            RecursoTecnologico recursoTecnologico3 = new RecursoTecnologico(3, DateTime.Now.Date, datosSoporte.tiposRT[2], datosSoporte.modelos[2]);
+            recursoTecnologico3.agregarCambioEstado(datosSoporte.getEstadoDisponibleRecursoTecnologico());
+            recursos.Add(recursoTecnologico3);
+            RecursoTecnologico recursoTecnologico4 = new RecursoTecnologico(4, DateTime.Now.Date, datosSoporte.tiposRT[3], datosSoporte.modelos[3]);
+            recursoTecnologico4.agregarCambioEstado(datosSoporte.getEstadoDisponibleRecursoTecnologico());
+            recursos.Add(recursoTecnologico4);
+            RecursoTecnologico recursoTecnologico5 = new RecursoTecnologico(5, DateTime.Now.Date, datosSoporte.tiposRT[4], datosSoporte.modelos[4]);
+            recursoTecnologico5.agregarCambioEstado(datosSoporte.getEstadoDisponibleRecursoTecnologico());
+            recursos.Add(recursoTecnologico5);
+            RecursoTecnologico recursoTecnologico6 = new RecursoTecnologico(6, DateTime.Now.Date, datosSoporte.tiposRT[5], datosSoporte.modelos[5]);
+            recursoTecnologico6.agregarCambioEstado(datosSoporte.getEstadoDisponibleRecursoTecnologico());
+            recursos.Add(recursoTecnologico6);
+            RecursoTecnologico recursoTecnologico7 = new RecursoTecnologico(7, DateTime.Now.Date, datosSoporte.tiposRT[1], datosSoporte.modelos[6]);
+            recursoTecnologico7.agregarCambioEstado(datosSoporte.getEstadoDisponibleRecursoTecnologico());
+            recursos.Add(recursoTecnologico7);
+            RecursoTecnologico recursoTecnologico8 = new RecursoTecnologico(8, DateTime.Now.Date, datosSoporte.tiposRT[2], datosSoporte.modelos[7]);
+            recursoTecnologico8.agregarCambioEstado(datosSoporte.getEstadoDisponibleRecursoTecnologico());
+            recursos.Add(recursoTecnologico8);
+            RecursoTecnologico recursoTecnologico9 = new RecursoTecnologico(9, DateTime.Now.Date, datosSoporte.tiposRT[3], datosSoporte.modelos[8]);
+            recursoTecnologico9.agregarCambioEstado(datosSoporte.getEstadoDisponibleRecursoTecnologico());
+            recursos.Add(recursoTecnologico9);
+            RecursoTecnologico recursoTecnologico10 = new RecursoTecnologico(10, DateTime.Now.Date, datosSoporte.tiposRT[4], datosSoporte.modelos[9]);
+            recursoTecnologico10.agregarCambioEstado(datosSoporte.getEstadoDisponibleRecursoTecnologico());
+            recursos.Add(recursoTecnologico10);
 
             // Asignaciones Cientifico CI
             asignacionesCientificoCI = new List<AsignacionCientificoCI>();
@@ -108,67 +147,48 @@ namespace PPAI.Entidades
             // Turnos
             turnos = new List<Turno>();
             Turno turno1 = new Turno(new DateTime(2022, 6, 5), new DateTime(2022, 6, 18), new DateTime(2022, 7, 18), asignacionPC1);
+            turno1.agregarCambioEstadoTurno(new DateTime(2022, 6, 5), datosSoporte.getEstadoConfirmadoTurno());
             asignacionPC1.agregarTurnos(turno1);
+            recursoTecnologico1.agregarTurno(turno1);
             turnos.Add(turno1);
+            
             Turno turno2 = new Turno(new DateTime(2022, 8, 4), new DateTime(2022, 8, 10), new DateTime(2022, 8, 12), asignacionPC1);
+            turno2.agregarCambioEstadoTurno(new DateTime(2022, 8, 4), datosSoporte.getEstadoPdteConfirmacionTurno());
             asignacionPC1.agregarTurnos(turno2);
+            recursoTecnologico1.agregarTurno(turno2);
             turnos.Add(turno2);
+            
             Turno turno3 = new Turno(new DateTime(2022, 9, 2), new DateTime(2022, 9, 18), new DateTime(2022, 9, 20), asignacionPC2);
+            turno3.agregarCambioEstadoTurno(new DateTime(2022, 9, 2), datosSoporte.getEstadoPdteConfirmacionTurno());
             asignacionPC1.agregarTurnos(turno3);
+            recursoTecnologico1.agregarTurno(turno3);
             turnos.Add(turno3);
+            
             Turno turno4 = new Turno(new DateTime(2022, 10, 11), new DateTime(2022, 10, 14), new DateTime(2022, 10, 22), asignacionPC3);
+            turno4.agregarCambioEstadoTurno(new DateTime(2022, 10, 11), datosSoporte.getEstadoPdteConfirmacionTurno());
             asignacionPC1.agregarTurnos(turno4);
+            recursoTecnologico1.agregarTurno(turno4);
             turnos.Add(turno4);
+            
             Turno turno5 = new Turno(new DateTime(2022, 11, 1), new DateTime(2022, 11, 7), new DateTime(2022, 11, 27), asignacionPC4);
+            turno5.agregarCambioEstadoTurno(new DateTime(2022, 11, 1), datosSoporte.getEstadoPdteConfirmacionTurno());
             asignacionPC1.agregarTurnos(turno5);
+            recursoTecnologico1.agregarTurno(turno5);
             turnos.Add(turno5);
+            
             Turno turno6 = new Turno(new DateTime(2022, 12, 4), new DateTime(2022, 12, 8), new DateTime(2022, 12, 12), asignacionPC5);
+            turno6.agregarCambioEstadoTurno(new DateTime(2022, 12, 4), datosSoporte.getEstadoPdteConfirmacionTurno());
             asignacionPC1.agregarTurnos(turno6);
+            recursoTecnologico1.agregarTurno(turno6);
             turnos.Add(turno6);
 
 
             // Cambios Estado Turno
             cambiosEstadoTurno = new List<CambioEstadoTurno>();
 
-            // Cambios Estado RT
-            cambiosEstadoRT = new List<CambioEstadoRT>();
-            CambioEstadoRT cambio1 = new CambioEstadoRT(DateTime.Now.Date, datosSoporte.getEstadoDisponibleRecursoTecnologico());
-            CambioEstadoRT cambio2 = new CambioEstadoRT(new DateTime(2022, 05, 23), datosSoporte.getEstadoDisponibleRecursoTecnologico());
+            
 
-
-            // Recursos Tecnologicos
-            //Recursos Tecnologicos
-            recursos = new List<RecursoTecnologico>();
-            RecursoTecnologico recursoTecnologico1 = new RecursoTecnologico(1, DateTime.Now.Date, datosSoporte.tiposRT[0], datosSoporte.modelos[0]);
-            recursoTecnologico1.agregarCambioEstado(cambio1);
-            recursos.Add(recursoTecnologico1);
-            RecursoTecnologico recursoTecnologico2 = new RecursoTecnologico(2, DateTime.Now.Date, datosSoporte.tiposRT[1], datosSoporte.modelos[1]);
-            recursoTecnologico2.agregarCambioEstado(cambio1);
-            recursos.Add(recursoTecnologico2);
-            RecursoTecnologico recursoTecnologico3 = new RecursoTecnologico(3, DateTime.Now.Date, datosSoporte.tiposRT[2], datosSoporte.modelos[2]);
-            recursoTecnologico3.agregarCambioEstado(cambio1);
-            recursos.Add(recursoTecnologico3);
-            RecursoTecnologico recursoTecnologico4 = new RecursoTecnologico(4, DateTime.Now.Date, datosSoporte.tiposRT[3], datosSoporte.modelos[3]);
-            recursoTecnologico4.agregarCambioEstado(cambio1);
-            recursos.Add(recursoTecnologico4);
-            RecursoTecnologico recursoTecnologico5 = new RecursoTecnologico(5, DateTime.Now.Date, datosSoporte.tiposRT[4], datosSoporte.modelos[4]);
-            recursoTecnologico5.agregarCambioEstado(cambio1);
-            recursos.Add(recursoTecnologico5);
-            RecursoTecnologico recursoTecnologico6 = new RecursoTecnologico(6, DateTime.Now.Date, datosSoporte.tiposRT[5], datosSoporte.modelos[5]);
-            recursoTecnologico6.agregarCambioEstado(cambio2);
-            recursos.Add(recursoTecnologico6);
-            RecursoTecnologico recursoTecnologico7 = new RecursoTecnologico(7, DateTime.Now.Date, datosSoporte.tiposRT[6], datosSoporte.modelos[6]);
-            recursoTecnologico7.agregarCambioEstado(cambio2);
-            recursos.Add(recursoTecnologico7);
-            RecursoTecnologico recursoTecnologico8 = new RecursoTecnologico(8, DateTime.Now.Date, datosSoporte.tiposRT[7], datosSoporte.modelos[7]);
-            recursoTecnologico8.agregarCambioEstado(cambio2);
-            recursos.Add(recursoTecnologico8);
-            RecursoTecnologico recursoTecnologico9 = new RecursoTecnologico(9, DateTime.Now.Date, datosSoporte.tiposRT[8], datosSoporte.modelos[8]);
-            recursoTecnologico9.agregarCambioEstado(cambio2);
-            recursos.Add(recursoTecnologico9);
-            RecursoTecnologico recursoTecnologico10 = new RecursoTecnologico(10, DateTime.Now.Date, datosSoporte.tiposRT[9], datosSoporte.modelos[9]);
-            recursoTecnologico10.agregarCambioEstado(cambio2);
-            recursos.Add(recursoTecnologico10);
+            
 
             // Asignaciones Responsable Tecnico RT
             asignacionesResponsableTecnicoRT = new List<AsignacionResponsableTecnicoRT>();
@@ -179,10 +199,10 @@ namespace PPAI.Entidades
             asignacionP1RT1.agregarRecurso(recursoTecnologico4);
             asignacionesResponsableTecnicoRT.Add(asignacionP1RT1);
 
-            AsignacionResponsableTecnicoRT asignacionP2RT1 = new AsignacionResponsableTecnicoRT(DateTime.Now.Date, personal1);
-            asignacionP1RT1.agregarRecurso(recursoTecnologico1);
-            asignacionP1RT1.agregarRecurso(recursoTecnologico7);
-            asignacionP1RT1.agregarRecurso(recursoTecnologico8);
+            AsignacionResponsableTecnicoRT asignacionP2RT1 = new AsignacionResponsableTecnicoRT(DateTime.Now.Date, personal2);
+            asignacionP2RT1.agregarRecurso(recursoTecnologico1);
+            asignacionP2RT1.agregarRecurso(recursoTecnologico7);
+            asignacionP2RT1.agregarRecurso(recursoTecnologico8);
             asignacionesResponsableTecnicoRT.Add(asignacionP2RT1);
 
 
@@ -243,6 +263,7 @@ namespace PPAI.Entidades
                 if (personal.getUsuario().Equals(usuario))
                 {
                     personalCientificoUsuario = personal;
+                    break;
                 }
             }
             // busco la asignacion del usuario y le pido sus RT disponibles
@@ -251,6 +272,7 @@ namespace PPAI.Entidades
                 if (asignacion.getPersonalCientifico().Equals(personalCientificoUsuario))
                 {
                     recursosTecnologicosDisponibles = asignacion.getRTDisponibles(EstadoDisponible);
+                    break;
                 }
             }
 

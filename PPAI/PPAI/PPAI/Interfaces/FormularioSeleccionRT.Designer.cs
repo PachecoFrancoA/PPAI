@@ -50,7 +50,7 @@
             // 
             this.btn_confirmarSeleccionRT.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_confirmarSeleccionRT.Location = new System.Drawing.Point(795, 527);
-            this.btn_confirmarSeleccionRT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_confirmarSeleccionRT.Margin = new System.Windows.Forms.Padding(4);
             this.btn_confirmarSeleccionRT.Name = "btn_confirmarSeleccionRT";
             this.btn_confirmarSeleccionRT.Size = new System.Drawing.Size(132, 36);
             this.btn_confirmarSeleccionRT.TabIndex = 2;
@@ -62,7 +62,7 @@
             // 
             this.btn_salir.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_salir.Location = new System.Drawing.Point(72, 527);
-            this.btn_salir.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_salir.Margin = new System.Windows.Forms.Padding(4);
             this.btn_salir.Name = "btn_salir";
             this.btn_salir.Size = new System.Drawing.Size(132, 36);
             this.btn_salir.TabIndex = 3;
@@ -79,6 +79,7 @@
             this.grid11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.grid11.MultiSelect = false;
             this.grid11.Name = "grid11";
+            this.grid11.ReadOnly = true;
             this.grid11.RowHeadersWidth = 51;
             this.grid11.RowTemplate.Height = 24;
             this.grid11.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -94,7 +95,7 @@
             this.Controls.Add(this.btn_salir);
             this.Controls.Add(this.btn_confirmarSeleccionRT);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormularioSeleccionRT";
             this.Text = "FormularioSeleccionRT";
             this.Load += new System.EventHandler(this.FormularioSeleccionRT_Load);

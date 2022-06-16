@@ -79,7 +79,7 @@ namespace PPAI.Entidades
         }
         public bool estaDentroPlazoMantenimiento(DateTime? fechaFinPrevista)
         {
-            if (this.fechaHoraDesde.Value.Date <= DateTime.Now.Date && this.fechaHoraHasta.Value.Date >= fechaFinPrevista)
+            if (this.fechaHoraDesde.Value.Date <= fechaFinPrevista)
             {
                 return true;
             }
