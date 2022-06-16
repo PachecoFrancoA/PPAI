@@ -92,8 +92,19 @@ namespace PPAI.Entidades
 
         public void agregarCambioEstado(Estado estado)
         {
-            CambioEstadoRT cambio = new CambioEstadoRT(DateTime.Now, estado);
-            this.cambiosEstado.Add(cambio);
+            CambioEstadoRT ultimo = new CambioEstadoRT();
+            foreach (CambioEstadoRT cambio in this.cambiosEstado)
+            {
+                if (cambio.esUltimo())
+                {
+                    ultimo = cambio;
+                }
+            }
+            
+            ultimo.setFechaHoraHasta(DateTime.Now);
+
+            CambioEstadoRT cambioNuevo = new CambioEstadoRT(DateTime.Now, estado);
+            this.cambiosEstado.Add(cambioNuevo);
         }
         
         public void agregarTurno(Turno turno)
@@ -145,6 +156,19 @@ namespace PPAI.Entidades
             {
                 turno.cancelarPorMC(canceladoPorMC);
             }
+        }
+
+        public Estado getEstado()
+        {
+            foreach (CambioEstadoRT cambio in this.cambiosEstado)
+            {
+                if (cambio.esUltimo())
+                {
+                    return cambio.getEstado();
+                }
+            }
+
+            return null;
         }
 
         

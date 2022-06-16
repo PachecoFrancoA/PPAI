@@ -74,3 +74,4 @@ E:\4° Año\DSI\PPAI 2022\PPAI\PPAI\PPAI\PPAI\obj\Debug\PPAI.csproj.GenerateReso
 E:\4° Año\DSI\PPAI 2022\PPAI\PPAI\PPAI\PPAI\obj\Debug\PPAI.csproj.CoreCompileInputs.cache
 E:\4° Año\DSI\PPAI 2022\PPAI\PPAI\PPAI\PPAI\obj\Debug\PPAI.exe
 E:\4° Año\DSI\PPAI 2022\PPAI\PPAI\PPAI\PPAI\obj\Debug\PPAI.pdb
+C:\AA Facu Albano\DSI\PPAI\PPAI\PPAI\PPAI\PPAI\obj\Debug\PPAI.Interfaces.FrmVisulizarCambios.resources

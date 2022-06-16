@@ -87,6 +87,7 @@ namespace PPAI.Interfaces
         private void button1_Click(object sender, EventArgs e)
         {
             this.gestor.tomarConfirmacionIngresoCorrectivo();
+            this.Dispose();
         }
     }
 }

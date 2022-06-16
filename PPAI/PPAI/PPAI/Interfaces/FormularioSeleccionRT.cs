@@ -98,6 +98,12 @@ namespace PPAI.Interfaces
             
         }
 
+        public void notificarNoHayRecursos()
+        {
+            MessageBox.Show("No hay recursos tecnologicos disponibles", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            this.Close();
+        }
+
         
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

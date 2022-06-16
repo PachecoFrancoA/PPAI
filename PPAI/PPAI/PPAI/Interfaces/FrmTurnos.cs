@@ -75,5 +75,11 @@ namespace PPAI.Interfaces
             this.gestor.tomarConfirmacion();
             this.Dispose();
         }
+
+        public void notificarNoHayTurnos()
+        {
+            MessageBox.Show("No hay turnos para confirmar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            this.Dispose();
+        }
     }
 }

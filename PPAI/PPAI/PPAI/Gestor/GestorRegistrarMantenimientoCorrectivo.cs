@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using PPAI.Interfaces;
 using PPAI.Entidades;
+using System.Windows.Forms;
 
 namespace PPAI.Gestor
 {
@@ -47,6 +48,8 @@ namespace PPAI.Gestor
 
         public List<Turno> turnosConfirmadosOPdteConfirmacion;
 
+        public FrmVisulizarCambios frmVisulizarCambios;
+
 
         public void opcionRegistrarMantenimientoCorrectivoRT()
         {
@@ -60,11 +63,25 @@ namespace PPAI.Gestor
 
             recursosTecnologicosDisponibles = buscarRTDisponibles(this.usuario);
 
-            agruparPorTipoDeRecurso(recursosTecnologicosDisponibles);
 
-            pantallaRT.solicitarSeleccionRT(recursosTecnologicosDisponibles);
+            // FLUJO ALTERNATIVO
+            if (recursosTecnologicosDisponibles.Count == 0)
+            {
+                pantallaRT.notificarNoHayRecursos();
+                principal.avisarCambioDeUsuario();
+                Environment.Exit(404);
 
-            pantallaRT.Show();
+            }
+            else
+            {
+                agruparPorTipoDeRecurso(recursosTecnologicosDisponibles);
+
+                pantallaRT.solicitarSeleccionRT(recursosTecnologicosDisponibles);
+
+                pantallaRT.Show();
+            }
+
+           
             //recursoSeleccionado = enviarASolicitarSeleccion(recursoTecnologicos);
 
         }
@@ -121,11 +138,22 @@ namespace PPAI.Gestor
 
             turnosConfirmadosOPdteConfirmacion = recursoSeleccionado.buscarTurnosConfOPdteConf(fechaFinPrevista, estadoPdteConfirmacionTurno, estadoConfirmado);
 
-            agruparPorPersonalCientifico(turnosConfirmadosOPdteConfirmacion);
 
-            frmTurnos.solicitarConfirmacionAMantenimiento(turnosConfirmadosOPdteConfirmacion);
-            frmTurnos.Show();
+            // FLUJO ALTERNATIVO
+            if (turnosConfirmadosOPdteConfirmacion.Count == 0)
+            {
+                frmTurnos.notificarNoHayTurnos();
+                this.tomarConfirmacion();
+                
+            }
+            else
+            {
+                agruparPorPersonalCientifico(turnosConfirmadosOPdteConfirmacion);
 
+                frmTurnos.solicitarConfirmacionAMantenimiento(turnosConfirmadosOPdteConfirmacion);
+                frmTurnos.Show();
+            }
+     
 
         }
 
@@ -185,6 +213,14 @@ namespace PPAI.Gestor
         public void generarMail()
         {
             //hacer frm que diga enviando mail
+            this.frmVisulizarCambios = new FrmVisulizarCambios(this);
+            frmVisulizarCambios.finCU(this.recursoSeleccionado, this.turnosConfirmadosOPdteConfirmacion);
+            frmVisulizarCambios.Show();
+        }
+
+        public void finCU()
+        {
+            this.frmVisulizarCambios.Close();
         }
         
        

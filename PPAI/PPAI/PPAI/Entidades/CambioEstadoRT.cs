@@ -19,6 +19,10 @@ namespace PPAI.Entidades
             this.fechaHoraHasta = null;
         }
 
+        public CambioEstadoRT()
+        {
+        }
+
         public bool esUltimo()
         {
             if (this.fechaHoraHasta.Equals(null))

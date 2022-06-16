@@ -63,8 +63,11 @@ namespace PPAI.Entidades
 
 
             //Sesiones
+            // poner usuario 1 cuando queremos que haya recursos
+            // poner usuario 3 cuando no queremos que haya recursos
             sesiones = new List<Sesion>();
             Sesion ses1 = new Sesion(DateTime.Now.Date, usu1);
+            //Sesion ses1 = new Sesion(DateTime.Now.Date, usu3);
             sesiones.Add(ses1);
 
             //Personal Cientifico

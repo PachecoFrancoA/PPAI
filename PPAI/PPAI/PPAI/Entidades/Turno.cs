@@ -111,5 +111,19 @@ namespace PPAI.Entidades
             this.cambiosEstado.Add(cambio);
         }
 
+        public Estado getEstado()
+        {
+            CambioEstadoTurno ultimo = new CambioEstadoTurno();
+            foreach (CambioEstadoTurno cambio in this.cambiosEstado)
+            {
+                if (cambio.esUltimo())
+                {
+                    ultimo = cambio;
+                }
+            }
+
+            return ultimo.getEstado();
+        }
+
     }
 }

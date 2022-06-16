@@ -50,7 +50,7 @@
             // 
             this.btn_confirmar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_confirmar.Location = new System.Drawing.Point(645, 459);
-            this.btn_confirmar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_confirmar.Margin = new System.Windows.Forms.Padding(4);
             this.btn_confirmar.Name = "btn_confirmar";
             this.btn_confirmar.Size = new System.Drawing.Size(131, 38);
             this.btn_confirmar.TabIndex = 2;
@@ -62,7 +62,7 @@
             // 
             this.btn_salir.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_salir.Location = new System.Drawing.Point(52, 459);
-            this.btn_salir.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_salir.Margin = new System.Windows.Forms.Padding(4);
             this.btn_salir.Name = "btn_salir";
             this.btn_salir.Size = new System.Drawing.Size(131, 38);
             this.btn_salir.TabIndex = 3;
@@ -71,9 +71,14 @@
             // 
             // grid11
             // 
+            this.grid11.AllowUserToAddRows = false;
+            this.grid11.AllowUserToDeleteRows = false;
+            this.grid11.AllowUserToOrderColumns = true;
             this.grid11.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grid11.Location = new System.Drawing.Point(52, 97);
+            this.grid11.MultiSelect = false;
             this.grid11.Name = "grid11";
+            this.grid11.ReadOnly = true;
             this.grid11.RowHeadersWidth = 51;
             this.grid11.RowTemplate.Height = 24;
             this.grid11.Size = new System.Drawing.Size(724, 315);
@@ -88,7 +93,7 @@
             this.Controls.Add(this.btn_salir);
             this.Controls.Add(this.btn_confirmar);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmTurnos";
             this.Text = "FrmTurnos";
             ((System.ComponentModel.ISupportInitialize)(this.grid11)).EndInit();

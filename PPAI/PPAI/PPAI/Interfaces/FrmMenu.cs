@@ -42,6 +42,12 @@ namespace PPAI.Interfaces
         {
             this.Close();
         }
+
+        public void avisarCambioDeUsuario()
+        {
+            MessageBox.Show("Cambie el usuario", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            this.Dispose();
+        }
     }
        
 }
